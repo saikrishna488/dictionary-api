@@ -4,12 +4,12 @@ const axios = require('axios');
 
 router.get('/:word', async (req,res)=>{
     if(req.params.word){
-        if(req.params.word == 'deekshitha'){
+        if(req.params.word.toLowerCase() == 'deekshitha'){
             res.status(200).json({meaning:"Good girl , goddess, Forgives everyone including h0"});
         }
         else{
                 try{
-                    let ress = await axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/'+req.params.word);
+                    let ress = await axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/'+req.params.word.toLowerCase());
                     let data = ress.data;
 
                     let m = data[0].meanings[0].definitions[0].definition;
